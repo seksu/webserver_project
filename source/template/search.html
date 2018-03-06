@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2> Kookle </h2>
+        <input type="checkbox" id="searchFace"> Check and select for search by face : <br>
+        &emsp; <input type="file" name="myfile" id="myFace">
+        &emsp; <button type="submit" >Upload</button>
+</form>
+
+{% if uploaded_file_url %}
+    <p>File uploaded : <a href="{{ uploaded_file_url }}" id="faceID" value="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+{% endif %}
+
+    <br>
+    <input type="checkbox" id="searchShirtColor"> Check and select for search by shirt color : 
+    <input type="color" id="myColor">
+    <br><br>
+
+    <input type="checkbox" id="searchDate"> check and select for search by date :
+    <input type="date" id="myDate">
+    <br><br>
+
+    <input type="checkbox" id="searchFloor"> check and select for search by floor : <br>
+    
+        &emsp; <input type="checkbox" id="1">floor 1<br>
+        &emsp; <input type="checkbox" id="2">floor 2<br>
+        &emsp; <input type="checkbox" id="3">floor 3<br>
+        &emsp; <input type="checkbox" id="4">floor 4<br>
+        &emsp; <input type="checkbox" id="5">floor 5<br>
+        &emsp; <input type="checkbox" id="6">floor 6<br>
+        &emsp; <input type="checkbox" id="7">floor 7<br>
+        &emsp; <input type="checkbox" id="8">floor 8<br>
+        &emsp; <input type="checkbox" id="9">floor 9<br>
+        &emsp; <input type="checkbox" id="10">floor 10<br>
+
+    <br>
+    <button onclick="search()">Search</button>
+
+    <script>
+        var face    = '';
+        var color   = '';
+        var date    = '';
+        var floor   = '';
+
+        function faceSubmit(){
+            console.log(document.getElementById("myFace"));
+        }
+        function search() {
+            //console.log(document.getElementById("faceID"));
+            if(document.getElementById("searchFace").checked){
+                console.log("pass");
+                console.log(document.getElementById("faceID").innerHTML); 
+            }
+            if(document.getElementById("searchShirtColor").checked){
+                color = document.getElementById("myColor").value;
+                console.log(document.getElementById("myColor").value); 
+            }
+            if(document.getElementById("searchDate").checked){
+                date = document.getElementById("myDate").value;
+                console.log(document.getElementById("myDate").value); 
+            }
+            if(document.getElementById("searchFloor").checked){
+                for(var i=1 ; i<=10 ; i++){
+                    if(document.getElementById(i.toString()).checked){
+                        if(floor){
+                            floor = floor + ',';
+                        }
+                        floor = floor + i.toString();
+                    }
+                }
+                console.log(floor); 
+                floor = '';
+            }                        
+        }
+
+    </script>
+
+{% endblock %}

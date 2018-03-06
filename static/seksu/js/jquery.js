@@ -1,0 +1,13 @@
+$(document).ready(function(){
+	$(".Finance-head").load("./Finance-head.html");
+	$(".Finance-blog1").load("./Finance-blog1.php");
+	$(".Finance-blog2").load("./Finance-blog2.html");
+	$(".Finance-blog3").load("./Finance-blog3.html");
+	$(".Transfer-head").load("./Transfer-head.html");
+	$(".Operator-head").load("./Operator-head.html");
+	$(".Requestotp-head").load("./Requestotp-head.html");
+	$(".Operator-login-head").load("./Operator-login-head.html");
+	$(".Operator-create-head").load("./Operator-create-head.php");
+	$(".Operator-with-head").load("./Operator-with-head.html");
+	$(".Operator-depo-head").load("./Operator-depo-head.html");
+});

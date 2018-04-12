@@ -49,6 +49,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=255, null=True, blank=True)
     last_name = models.CharField(max_length=255, null=True, blank=True)
     company = models.ForeignKey(Company, null=True, on_delete=models.CASCADE)
+    active = models.BooleanField(default=True)
 
     role = models.SmallIntegerField(choices=ROLE_CHOICES, default=0)
 

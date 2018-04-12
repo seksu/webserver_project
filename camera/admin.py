@@ -8,11 +8,11 @@ class CompanyAdmin(admin.ModelAdmin):
 	list_display = ('id', 'name')
 
 class CameraDetailAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'token', 'date', 'get_company')
+	list_display = ('id', 'name', 'token', 'date', 'get_company')
 
-    def get_company(self, camera):
-        return camera.company.name
-    get_company.short_description = 'Company'
+	def get_company(self, camera):
+		return camera.company.name if camera.company else "-"
+	get_company.short_description = 'Company'
 
 admin.site.register(Camera_Detail, CameraDetailAdmin)
 admin.site.register(Company, CompanyAdmin)
